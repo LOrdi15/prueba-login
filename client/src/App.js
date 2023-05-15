@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import LoginPage from './LoginPage';
-
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -9,7 +7,7 @@ function LoginPage() {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('/adduser', {
+      const response = await fetch('http://localhost:4000/adduser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

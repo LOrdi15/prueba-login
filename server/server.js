@@ -11,10 +11,10 @@ app.post("/adduser", (req, res) => {
   const username = req.body["username"];
   const password = req.body["password"];
 
-  console.log("Username:" + username);
-  console.log("Password" + password);
+  console.log("Username: " + username);
+  console.log("Password: " + password);
 
-  const insertSTMT = `INSERT INTO accounts (username, password) VALUES ( '${username}','${password}');`
+  const insertSTMT = `INSERT INTO accounts (username, password) VALUES ('${username}', '${password}');`;
 
   pool
     .query(insertSTMT)
@@ -23,15 +23,11 @@ app.post("/adduser", (req, res) => {
       console.log(response);
     })
     .catch((err) => {
-      console.log(response);
-    })
-
-    .catch((err)=>{
       console.log(err);
-    })
+    });
 
   console.log(req.body);
-  res.send("Response Received: " + req.body);
+  res.send("Response Received: " + JSON.stringify(req.body));
 });
 
 app.listen(4000, () => console.log("Server on localhost:4000"));
