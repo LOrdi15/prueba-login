@@ -1,23 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:4000/adduser', {
-        method: 'POST',
+      const response = await fetch("http://localhost:4000/adduser", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username, password }),
       });
       if (response.ok) {
-        console.log('User added successfully');
+        console.log("User added successfully");
+        console.log("Username: " + username);
+        console.log("Password: " + password);
+        
       } else {
-        console.log('An error occurred');
+        console.log("An error occurred");
       }
     } catch (error) {
       console.error(error);
